@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #112b1e; /* British Green */
+            color: #fff; /* White text */
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            background-color: #19382d; /* Darker shade of British Green */
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin: 0;
+            font-size: 2em;
+            font-family: 'Arial Black', sans-serif;
+        }
+
+        h2 {
+            background-color: #19382d; /* Darker shade of British Green */
+            color: #fff;
+            padding: 10px;
+            margin-top: 30px;
+            font-size: 1.5em;
+            font-family: 'Arial Black', sans-serif;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #4a9471; /* Lighter shade of British Green */
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #1a3a2e; /* Darker shade of British Green */
+            color: #fff;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Details and Parameters</h1>
+
+    <h2>Criteria Information</h2>
+    <table border="1">
+        <tr>
+            <th>Criteria</th>
+            <th>Information</th>
+        </tr>
+        <tr>
+            <td>URL</td>
+            <td>{{ details.url }}</td>
+        </tr>
+        <tr>
+            <td>Meta Title</td>
+            <td>{{ details.meta_title }}</td>
+        </tr>
+        <tr>
+            <td>Meta Keywords</td>
+            <td>{{ details.meta_keywords }}</td>
+        </tr>
+        <tr>
+            <td>Meta Description</td>
+            <td>{{ details.meta_description }}</td>
+        </tr>
+        <tr>
+            <td>Page Content</td>
+            <td>
+                <ul>
+                    {% for paragraph in details.page_content %}
+                    <li>{{ paragraph }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+        </tr>
+    </table>
+
+    <h2>Webpage Score and Missing Words</h2>
+    <table border="1">
+        <tr>
+            <th>Criteria</th>
+            <th>NLP Score (out of 10)</th>
+            <th>Missing Words</th>
+        </tr>
+        <tr>
+            <td>URL</td>
+            <td>{{ details.scores.url_score }}</td>
+            <td>{{ details.missing_words.url_missing_words }}</td>
+        </tr>
+        <tr>
+            <td>Meta Title</td>
+            <td>{{ details.scores.meta_title_score }}</td>
+            <td>{{ details.missing_words.meta_title_missing_words }}</td>
+        </tr>
+        <tr>
+            <td>Meta Keywords</td>
+            <td>{{ details.scores.meta_keywords_score }}</td>
+            <td>{{ details.missing_words.meta_keywords_missing_words }}</td>
+        </tr>
+        <tr>
+            <td>Meta Description</td>
+            <td>{{ details.scores.meta_description_score }}</td>
+            <td>{{ details.missing_words.meta_description_missing_words }}</td>
+        </tr>
+        <tr>
+            <td>Page Content</td>
+            <td>{{ details.scores.page_content_score }}</td>
+            <td>{{ details.missing_words.page_content_missing_words }}</td>
+        </tr>
+        <tr>
+            <td>Overall Score</td>
+            <td>{{ details.scores.overall_score }}</td>
+            <td>N/A</td>
+        </tr>
+    </table>
+</body>
+
+</html>
